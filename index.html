@@ -93,7 +93,7 @@ img { max-width: 100%; display: block; }
 .nav-brand-name {
   display: none;
   font-family: 'Nunito', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.0rem;
   font-weight: 900;
   color: var(--dark);
   position: absolute;
@@ -101,6 +101,10 @@ img { max-width: 100%; display: block; }
   transform: translateX(-50%);
   white-space: nowrap;
   letter-spacing: -0.01em;
+  max-width: calc(100% - 130px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
 }
 .nav-brand-name .brand-pink { color: var(--pink); }
 
@@ -157,7 +161,7 @@ img { max-width: 100%; display: block; }
 .service-name { font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
 .service-desc { font-size: 0.8rem; color: var(--gray-400); line-height: 1.5; }
 .whyus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-.whyus-image-col { position: relative; }
+.whyus-image-col { position: relative; padding: 24px; }
 .whyus-image-main { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, var(--pink-light) 0%, var(--blue-light) 100%); border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 6rem; position: relative; }
 .whyus-image-card { position: absolute; background: var(--white); border-radius: 14px; box-shadow: var(--shadow-lg); padding: 14px 18px; display: flex; align-items: center; gap: 12px; }
 .whyus-image-card.c1 { bottom: -20px; right: -20px; }
@@ -231,7 +235,7 @@ img { max-width: 100%; display: block; }
 .social-btn { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: var(--gray-400); transition: all 0.2s; }
 .social-btn:hover { border-color: var(--pink); color: var(--pink); background: rgba(233,27,141,0.1); }
 @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(2, 1fr); } .footer-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 768px) { .nav-links, .nav-actions { display: none; } .nav-hamburger { display: flex; } .nav-brand-name { display: block; } .hero-grid { grid-template-columns: 1fr; gap: 40px; padding: 60px 0 40px; } .hero-right { display: none; } .whyus-grid { grid-template-columns: 1fr; } .whyus-image-col { display: none; } .packages-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; } .reviews-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; } .faq-grid { grid-template-columns: 1fr; } .section { padding: 64px 0; } .cta-banner { padding: 48px 32px; margin: 0 16px; } }
+@media (max-width: 768px) { .nav-links, .nav-actions { display: none; } .nav-hamburger { display: flex; } .nav-brand-name { display: block; } .hero-grid { grid-template-columns: 1fr; gap: 32px; padding: 20px 0 40px; } .hero-right { display: none; } .whyus-grid { grid-template-columns: 1fr; } .whyus-image-col { display: none; } .packages-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; } .reviews-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; } .faq-grid { grid-template-columns: 1fr; } .section { padding: 64px 0; } .cta-banner { padding: 48px 32px; margin: 0 16px; } }
 @media (max-width: 480px) { .services-grid { grid-template-columns: repeat(2, 1fr); } .hero-actions { flex-direction: column; } .hero-actions .btn { width: 100%; justify-content: center; } }
   </style>
 </head>
@@ -272,7 +276,7 @@ img { max-width: 100%; display: block; }
     <div class="hero-grid">
       <div class="hero-left">
         <div class="hero-eyebrow"><span></span><span data-i18n="hero-eyebrow">Katy &amp; Cypress, TX</span></div>
-        <h1>The Most Fun<br><span class="highlight">Party Rentals</span><br>in Katy &amp; Cypress</h1>
+        <h1 data-i18n-html="hero-h">The Most Fun<br><span class="highlight">Party Rentals</span><br>in Katy &amp; Cypress</h1>
         <p data-i18n="hero-p">Bounce houses, waterslides, tents, tables, chairs, and concession machines &mdash; everything you need for an unforgettable event, delivered and set up by our family team.</p>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-pink btn-lg">🎉 <span data-i18n="btn-book">Book Your Party</span></a>
@@ -359,7 +363,7 @@ img { max-width: 100%; display: block; }
       </div>
       <div class="whyus-content">
         <div class="tag" data-i18n="tag-why">Why Choose Us</div>
-        <h2 class="section-heading">A Family Business That Treats You <span class="highlight">Like Family</span></h2>
+        <h2 class="section-heading" data-i18n-html="why-h">A Family Business That Treats You <span class="highlight">Like Family</span></h2>
         <p class="section-sub" data-i18n="why-p">Nikky's Party Rentals was started out of a desire to serve families the best services for their events at an affordable price. We're local, reliable, and we genuinely care about making your party a success.</p>
         <div class="whyus-list">
           <div class="whyus-item"><div class="whyus-item-icon">💰</div><div><h4 data-i18n="why-1h">Affordable Prices</h4><p data-i18n="why-1p">We keep our prices fair so every family in Katy and Cypress can throw an amazing party without breaking the bank.</p></div></div>
@@ -382,20 +386,20 @@ img { max-width: 100%; display: block; }
     <div class="packages-grid">
 
       <div class="package-card featured">
-        <div class="package-badge">🔥 Most Rented</div>
+        <div class="package-badge" data-i18n="pk1-badge">🔥 Most Rented</div>
         <div class="package-icon">🏰</div>
         <div class="package-name" data-i18n="pk1-name">Moonbounces &amp; Slides</div>
         <div class="package-tagline" data-i18n="pk1-tag">The star of every party &mdash; kids go absolutely wild for these</div>
         <div style="margin-bottom:24px;">
-          <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:var(--gray-400);letter-spacing:0.05em;margin-bottom:4px;">Available options include</div>
-          <div style="font-size:0.9rem;color:var(--gray-500);">Classic Moonwalks &bull; Combo Units &bull; Waterslides &bull; Wet/Dry Slides</div>
+          <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:var(--gray-400);letter-spacing:0.05em;margin-bottom:4px;" data-i18n="pk1-label">Available options include</div>
+          <div style="font-size:0.9rem;color:var(--gray-500);" data-i18n="pk1-items">Classic Moonwalks · Combo Units · Waterslides · Wet/Dry Slides</div>
         </div>
-        <a href="tel:8329419756" class="package-cta filled">📞 Check Availability</a>
+        <a href="tel:8329419756" class="package-cta filled">📞 <span data-i18n="pkg-cta">Check Availability</span></a>
         <div class="package-features">
-          <div class="package-feature">Multiple sizes &amp; themes available</div>
-          <div class="package-feature">Wet and dry slide options</div>
-          <div class="package-feature">Safe, clean &amp; sanitized before every rental</div>
-          <div class="package-feature">Delivery, setup &amp; takedown included</div>
+          <div class="package-feature" data-i18n="pk1-f1">Multiple sizes &amp; themes available</div>
+          <div class="package-feature" data-i18n="pk1-f2">Wet and dry slide options</div>
+          <div class="package-feature" data-i18n="pk1-f3">Safe, clean &amp; sanitized before every rental</div>
+          <div class="package-feature" data-i18n="pk-delivery">Delivery, setup &amp; takedown included</div>
         </div>
       </div>
 
@@ -404,15 +408,15 @@ img { max-width: 100%; display: block; }
         <div class="package-name" data-i18n="pk2-name">Party Tents</div>
         <div class="package-tagline" data-i18n="pk2-tag">Keep your guests comfortable rain or shine with our large canopy tents</div>
         <div style="margin-bottom:24px;">
-          <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:var(--gray-400);letter-spacing:0.05em;margin-bottom:4px;">Perfect for</div>
-          <div style="font-size:0.9rem;color:var(--gray-500);">Backyard parties &bull; Reunions &bull; Quincea&ntilde;eras &bull; Corporate events</div>
+          <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:var(--gray-400);letter-spacing:0.05em;margin-bottom:4px;" data-i18n="pk2-label">Perfect for</div>
+          <div style="font-size:0.9rem;color:var(--gray-500);" data-i18n="pk2-items">Backyard parties · Reunions · Quinceañeras · Corporate events</div>
         </div>
-        <a href="tel:8329419756" class="package-cta outline">📞 Check Availability</a>
+        <a href="tel:8329419756" class="package-cta outline">📞 <span data-i18n="pkg-cta">Check Availability</span></a>
         <div class="package-features">
-          <div class="package-feature">Large canopy tents in multiple sizes</div>
-          <div class="package-feature">Great for shade &amp; weather protection</div>
-          <div class="package-feature">Can be combined with other rentals</div>
-          <div class="package-feature">Delivery, setup &amp; takedown included</div>
+          <div class="package-feature" data-i18n="pk2-f1">Large canopy tents in multiple sizes</div>
+          <div class="package-feature" data-i18n="pk2-f2">Great for shade &amp; weather protection</div>
+          <div class="package-feature" data-i18n="pk2-f3">Can be combined with other rentals</div>
+          <div class="package-feature" data-i18n="pk-delivery">Delivery, setup &amp; takedown included</div>
         </div>
       </div>
 
@@ -421,22 +425,22 @@ img { max-width: 100%; display: block; }
         <div class="package-name" data-i18n="pk3-name">Chairs &amp; Tables</div>
         <div class="package-tagline" data-i18n="pk3-tag">Seat all your guests in style &mdash; we have options for every event size</div>
         <div style="margin-bottom:24px;">
-          <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:var(--gray-400);letter-spacing:0.05em;margin-bottom:4px;">Available options include</div>
-          <div style="font-size:0.9rem;color:var(--gray-500);">Folding chairs &bull; Garden chairs &bull; Rectangular tables &bull; Round tables</div>
+          <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:var(--gray-400);letter-spacing:0.05em;margin-bottom:4px;" data-i18n="pk3-label">Available options include</div>
+          <div style="font-size:0.9rem;color:var(--gray-500);" data-i18n="pk3-items">Folding chairs · Garden chairs · Rectangular tables · Round tables</div>
         </div>
-        <a href="tel:8329419756" class="package-cta outline">📞 Check Availability</a>
+        <a href="tel:8329419756" class="package-cta outline">📞 <span data-i18n="pkg-cta">Check Availability</span></a>
         <div class="package-features">
-          <div class="package-feature">Plastic &amp; garden chair options</div>
-          <div class="package-feature">Rectangular &amp; round tables available</div>
-          <div class="package-feature">Rent by the piece or in bulk sets</div>
-          <div class="package-feature">Delivery &amp; pickup included</div>
+          <div class="package-feature" data-i18n="pk3-f1">Plastic &amp; garden chair options</div>
+          <div class="package-feature" data-i18n="pk3-f2">Rectangular &amp; round tables available</div>
+          <div class="package-feature" data-i18n="pk3-f3">Rent by the piece or in bulk sets</div>
+          <div class="package-feature" data-i18n="pk-pickup">Delivery &amp; pickup included</div>
         </div>
       </div>
 
     </div>
     <div style="text-align:center;margin-top:40px;padding:24px 32px;background:var(--pink-light);border-radius:16px;max-width:640px;margin-left:auto;margin-right:auto;">
-      <p style="font-size:0.95rem;color:var(--dark);font-weight:600;margin-bottom:16px;">🎉 Don&rsquo;t see what you need? We also carry <strong>concession machines</strong> (snowcone, popcorn, cotton candy) and more!</p>
-      <a href="tel:8329419756" class="btn btn-pink">📞 Call Us to See Everything — 832-941-9756</a>
+      <p style="font-size:0.95rem;color:var(--dark);font-weight:600;margin-bottom:16px;" data-i18n-html="promo-p">🎉 Don't see what you need? We also carry <strong>concession machines</strong> (snowcone, popcorn, cotton candy) and more!</p>
+      <a href="tel:8329419756" class="btn btn-pink" data-i18n="promo-btn">📞 Call Us to See Everything — 832-941-9756</a>
     </div>
   </div>
 </section>
@@ -480,8 +484,8 @@ img { max-width: 100%; display: block; }
     <div class="faq-grid">
       <div>
         <div class="tag" data-i18n="tag-faq">FAQ</div>
-        <h2 class="section-heading">Got <span class="highlight">Questions?</span><br>We&rsquo;ve Got Answers.</h2>
-        <p style="font-size:0.95rem;color:var(--gray-500);line-height:1.7;margin-bottom:28px;" data-i18n="faq-sub">Still not sure? Call or text us at <strong style="color:var(--pink);">832-941-9756</strong> — we're always happy to help you plan the perfect party.</p>
+        <h2 class="section-heading" data-i18n-html="faq-h">Got <span class="highlight">Questions?</span><br>We've Got Answers.</h2>
+        <p style="font-size:0.95rem;color:var(--gray-500);line-height:1.7;margin-bottom:28px;" data-i18n-html="faq-sub">Still not sure? Call or text us at <strong style="color:var(--pink);">832-941-9756</strong> — we're always happy to help you plan the perfect party.</p>
         <a href="tel:8329419756" class="btn btn-pink">📞 Call Us Now</a>
       </div>
       <div class="faq-items">
@@ -517,7 +521,7 @@ img { max-width: 100%; display: block; }
 <section class="section-sm" id="contact">
   <div class="container">
     <div class="cta-banner">
-      <h2>Ready to Make It a Party They&rsquo;ll Never Forget? 🎉</h2>
+      <h2 data-i18n="cta-h">Ready to Make It a Party They'll Never Forget? 🎉</h2>
       <p data-i18n="cta-p">Call or text us today and let's plan the perfect event. Serving Katy &amp; Cypress families with love.</p>
       <div class="cta-actions">
         <a href="tel:8329419756" class="btn btn-white btn-lg">📞 <span data-i18n="cta-call">Call</span> 832-941-9756</a>
