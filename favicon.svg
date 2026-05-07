@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Background -->
+  <rect width="64" height="64" rx="12" fill="#1b4d2e"/>
+
+  <!-- Grass blades -->
+  <path d="M14,44 Q16,30 18,22 Q19,30 20,44" fill="#4caf50"/>
+  <path d="M22,44 Q25,26 27,16 Q29,26 31,44" fill="#66bb6a"/>
+  <path d="M33,44 Q35,28 37,20 Q38,28 39,44" fill="#4caf50"/>
+  <path d="M41,44 Q43,32 45,24 Q46,32 47,44" fill="#66bb6a"/>
+
+  <!-- Ground bar (sun/gold color) -->
+  <rect x="10" y="44" width="44" height="5" rx="2.5" fill="#f5a623"/>
+
+  <!-- FC letters -->
+  <text x="32" y="42" text-anchor="middle" font-family="Arial Black, Impact, sans-serif"
+        font-weight="900" font-size="0" fill="#fff" opacity="0"/>
+
+  <!-- F -->
+  <rect x="11" y="7" width="5" height="16" rx="1.5" fill="#fff"/>
+  <rect x="11" y="7" width="12" height="4.5" rx="1.5" fill="#fff"/>
+  <rect x="11" y="13.5" width="9" height="3.5" rx="1.5" fill="#fff"/>
+
+  <!-- C -->
+  <path d="M28,7 Q42,7 42,15 L37.5,15 Q37.5,11 32,11 Q27,11 27,15.5 Q27,20.5 32,20.5 Q37.5,20.5 37.5,17 L42,17 Q42,23 28,23 Q22,23 22,15.5 Q22,7 28,7 Z" fill="#f5a623"/>
+</svg>
