@@ -215,26 +215,66 @@
     .why-trust-name{font-weight:700;font-size:.82rem}
     @media(max-width:768px){.why-trust-grid{grid-template-columns:1fr}}
 
-    /* ─── CONTACT FORM ─── */
+    /* ─── CONTACT / BOOKING ─── */
     #contact{background:#fff;padding:76px 5%}
     .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
     .contact-info-list{display:flex;flex-direction:column;gap:16px;margin-top:24px}
     .contact-row{display:flex;align-items:center;gap:12px;font-size:.9rem}
     .contact-icon{width:40px;height:40px;border-radius:50%;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
     .contact-row a{color:var(--green-mid);font-weight:600}
-    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .form-group{display:flex;flex-direction:column;gap:6px}
-    .form-group.full{grid-column:1/-1}
+    /* ── Multi-step booking form ── */
+    .booking-form{background:var(--card);border-radius:var(--r-lg);padding:32px 28px;border:1.5px solid var(--border)}
+    .booking-steps{display:flex;gap:0;margin-bottom:28px;position:relative}
+    .booking-steps::before{content:'';position:absolute;top:18px;left:10%;right:10%;height:2px;background:var(--border);z-index:0}
+    .bstep{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;z-index:1}
+    .bstep-dot{width:36px;height:36px;border-radius:50%;background:#fff;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;color:var(--muted);transition:all .3s}
+    .bstep.active .bstep-dot{background:var(--green-dark);border-color:var(--green-dark);color:#fff}
+    .bstep.done .bstep-dot{background:var(--green-bright);border-color:var(--green-bright);color:#fff}
+    .bstep-label{font-size:.68rem;font-weight:600;color:var(--muted);text-align:center;line-height:1.3}
+    .bstep.active .bstep-label{color:var(--green-dark)}
+    .booking-panel{display:none}
+    .booking-panel.active{display:block}
+    .booking-panel h3{font-size:1.05rem;font-weight:800;color:var(--green-dark);margin-bottom:6px}
+    .booking-panel p{font-size:.82rem;color:var(--muted);margin-bottom:20px}
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:4px}
+    .service-btn{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);padding:14px 8px;text-align:center;cursor:pointer;transition:all .2s;font-family:var(--font)}
+    .service-btn:hover{border-color:var(--green-mid);background:var(--green-light)}
+    .service-btn.selected{border-color:var(--green-dark);background:var(--green-light);box-shadow:0 0 0 3px rgba(46,125,50,.12)}
+    .service-btn .svc-icon{font-size:1.6rem;display:block;margin-bottom:6px}
+    .service-btn .svc-label{font-size:.72rem;font-weight:700;color:var(--green-dark);line-height:1.3}
+    .form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
     .form-group label{font-size:.82rem;font-weight:600;color:var(--text)}
     .form-group input,.form-group select,.form-group textarea{
       border:1.5px solid var(--border);border-radius:8px;padding:11px 14px;
-      font-size:.9rem;font-family:var(--font);outline:none;transition:border-color .2s;background:#fff;width:100%
+      font-size:.9rem;font-family:var(--font);outline:none;transition:border-color .2s;background:#fff;width:100%;box-sizing:border-box
     }
     .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--green-mid)}
-    .form-group textarea{resize:vertical;min-height:100px}
-    .form-submit{margin-top:6px;padding:14px;font-size:1rem;border-radius:8px;cursor:pointer;border:none;background:var(--green-dark);color:#fff;font-weight:700;width:100%;transition:background .2s}
-    .form-submit:hover{background:var(--green-mid)}
-    @media(max-width:768px){.contact-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}}
+    .form-group textarea{resize:vertical;min-height:90px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .time-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:4px}
+    .time-btn{background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:12px 6px;text-align:center;cursor:pointer;font-family:var(--font);transition:all .2s}
+    .time-btn:hover{border-color:var(--green-mid)}
+    .time-btn.selected{border-color:var(--green-dark);background:var(--green-light);box-shadow:0 0 0 3px rgba(46,125,50,.12)}
+    .time-btn .t-label{font-size:.75rem;font-weight:700;color:var(--green-dark);display:block}
+    .time-btn .t-sub{font-size:.66rem;color:var(--muted);display:block;margin-top:2px}
+    .booking-nav{display:flex;gap:10px;margin-top:20px}
+    .btn-back{background:#fff;border:1.5px solid var(--border);color:var(--muted);padding:12px 22px;border-radius:50px;font-weight:600;font-size:.88rem;cursor:pointer;transition:all .2s;font-family:var(--font)}
+    .btn-back:hover{border-color:var(--green-mid);color:var(--green-mid)}
+    .btn-next{background:var(--green-dark);color:#fff;padding:12px 28px;border-radius:50px;font-weight:700;font-size:.88rem;cursor:pointer;border:none;transition:all .2s;font-family:var(--font);flex:1}
+    .btn-next:hover{background:var(--green-mid)}
+    .btn-submit{background:var(--sun);color:#fff;padding:14px 28px;border-radius:50px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;transition:all .2s;font-family:var(--font);width:100%;margin-top:20px}
+    .btn-submit:hover{background:var(--sun-dark)}
+    .booking-success{text-align:center;padding:20px 0;display:none}
+    .booking-success .success-icon{font-size:3rem;margin-bottom:12px}
+    .booking-success h3{color:var(--green-dark);font-size:1.2rem;margin-bottom:8px}
+    .booking-success p{color:var(--muted);font-size:.88rem;line-height:1.7}
+    .form-error{color:#d32f2f;font-size:.78rem;margin-top:4px;display:none}
+    @media(max-width:768px){
+      .contact-grid{grid-template-columns:1fr}
+      .service-grid{grid-template-columns:repeat(2,1fr)}
+      .form-row{grid-template-columns:1fr}
+      .booking-form{padding:24px 18px}
+    }
 
     /* ─── FAQ ─── */
     #faq{background:var(--card);padding:76px 5%}
@@ -834,22 +874,88 @@
         </div>
       </div>
       <div>
-        <div class="form-grid">
-          <div class="form-group"><label>Name</label><input type="text" placeholder="Your full name"></div>
-          <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
-          <div class="form-group full"><label>Phone Number</label><input type="tel" placeholder="(540) 000-0000"></div>
-          <div class="form-group full"><label>Service Needed</label>
-            <select>
-              <option value="">Select a service...</option>
-              <option>Landscaping</option><option>Mulching</option>
-              <option>Tree Trimming & Removal</option><option>Gutter Cleaning</option>
-              <option>Leaf Removal</option><option>Junk Removal</option>
-              <option>Storm Damage Cleanup</option><option>Multiple / Not Sure</option>
-            </select>
+        <div class="booking-form">
+          <!-- Step indicators -->
+          <div class="booking-steps">
+            <div class="bstep active" id="bs1"><div class="bstep-dot">1</div><div class="bstep-label">Service</div></div>
+            <div class="bstep" id="bs2"><div class="bstep-dot">2</div><div class="bstep-label">Address</div></div>
+            <div class="bstep" id="bs3"><div class="bstep-dot">3</div><div class="bstep-label">Schedule</div></div>
+            <div class="bstep" id="bs4"><div class="bstep-dot">4</div><div class="bstep-label">Contact</div></div>
           </div>
-          <div class="form-group full"><label>Message</label><textarea placeholder="Describe your project, property size, or any questions..."></textarea></div>
+
+          <!-- Step 1: Service -->
+          <div class="booking-panel active" id="bp1">
+            <h3>What service do you need?</h3>
+            <p>Pick the service you'd like Alex to quote at your property.</p>
+            <div class="service-grid">
+              <button class="service-btn" onclick="selectService(this,'Lawn Care & Landscaping')"><span class="svc-icon">🌿</span><span class="svc-label">Lawn Care &amp; Landscaping</span></button>
+              <button class="service-btn" onclick="selectService(this,'Mulching')"><span class="svc-icon">🪵</span><span class="svc-label">Mulching</span></button>
+              <button class="service-btn" onclick="selectService(this,'Tree Trimming & Removal')"><span class="svc-icon">🌳</span><span class="svc-label">Tree Trimming &amp; Removal</span></button>
+              <button class="service-btn" onclick="selectService(this,'Gutter Cleaning')"><span class="svc-icon">🏠</span><span class="svc-label">Gutter Cleaning</span></button>
+              <button class="service-btn" onclick="selectService(this,'Leaf Removal')"><span class="svc-icon">🍂</span><span class="svc-label">Leaf Removal</span></button>
+              <button class="service-btn" onclick="selectService(this,'Multiple / Not Sure')"><span class="svc-icon">❓</span><span class="svc-label">Multiple / Not Sure</span></button>
+            </div>
+            <p id="svc-error" class="form-error">Please select a service to continue.</p>
+            <div class="booking-nav"><button class="btn-next" onclick="goStep(2)">Next — Address →</button></div>
+          </div>
+
+          <!-- Step 2: Address -->
+          <div class="booking-panel" id="bp2">
+            <h3>Where is the property?</h3>
+            <p>Alex will use this to plan his route to your home.</p>
+            <div class="form-group"><label>Street Address *</label><input type="text" id="f-street" placeholder="123 Oak Street"></div>
+            <div class="form-row">
+              <div class="form-group"><label>City *</label><input type="text" id="f-city" placeholder="Stafford"></div>
+              <div class="form-group"><label>ZIP Code *</label><input type="text" id="f-zip" placeholder="22554" maxlength="5"></div>
+            </div>
+            <div class="form-group"><label>Gate Code / Access Notes <span style="font-weight:400;color:var(--muted)">(optional)</span></label><input type="text" id="f-access" placeholder="e.g. Gate code #1234, dog in yard, park on street…"></div>
+            <p id="addr-error" class="form-error">Please fill in street address, city and ZIP.</p>
+            <div class="booking-nav">
+              <button class="btn-back" onclick="goStep(1)">← Back</button>
+              <button class="btn-next" onclick="goStep(3)">Next — Schedule →</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Schedule -->
+          <div class="booking-panel" id="bp3">
+            <h3>When works best for you?</h3>
+            <p>Pick a preferred date and time — Alex will confirm within 2 hours.</p>
+            <div class="form-group"><label>Preferred Date *</label><input type="date" id="f-date" min=""></div>
+            <label style="font-size:.82rem;font-weight:600;color:var(--text);display:block;margin-bottom:10px">Preferred Time *</label>
+            <div class="time-grid">
+              <button class="time-btn" onclick="selectTime(this,'Morning (7–10 AM)')"><span class="t-label">🌅 Morning</span><span class="t-sub">7:00 – 10:00 AM</span></button>
+              <button class="time-btn" onclick="selectTime(this,'Midday (10 AM–2 PM)')"><span class="t-label">☀️ Midday</span><span class="t-sub">10:00 AM – 2:00 PM</span></button>
+              <button class="time-btn" onclick="selectTime(this,'Afternoon (2–6 PM)')"><span class="t-label">🌤 Afternoon</span><span class="t-sub">2:00 – 6:00 PM</span></button>
+            </div>
+            <div class="form-group" style="margin-top:16px"><label>Additional Notes <span style="font-weight:400;color:var(--muted)">(optional)</span></label><textarea id="f-notes" placeholder="Anything Alex should know — property size, specific areas, urgency…"></textarea></div>
+            <p id="sched-error" class="form-error">Please select a date and time.</p>
+            <div class="booking-nav">
+              <button class="btn-back" onclick="goStep(2)">← Back</button>
+              <button class="btn-next" onclick="goStep(4)">Next — Contact Info →</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Contact -->
+          <div class="booking-panel" id="bp4">
+            <h3>Last step — how do we reach you?</h3>
+            <p>Alex will personally confirm your appointment within 2 hours.</p>
+            <div class="form-row">
+              <div class="form-group"><label>Your Name *</label><input type="text" id="f-name" placeholder="John Smith"></div>
+              <div class="form-group"><label>Phone Number *</label><input type="tel" id="f-phone" placeholder="(540) 000-0000"></div>
+            </div>
+            <div class="form-group"><label>Email Address *</label><input type="email" id="f-email" placeholder="john@email.com"></div>
+            <p id="contact-error" class="form-error">Please fill in your name, phone and email.</p>
+            <button class="btn-submit" onclick="submitBooking()">📅 Book My Free Estimate</button>
+            <div class="booking-nav" style="margin-top:10px"><button class="btn-back" onclick="goStep(3)">← Back</button></div>
+          </div>
+
+          <!-- Success -->
+          <div class="booking-success" id="booking-success">
+            <div class="success-icon">✅</div>
+            <h3>Request Sent — Alex Will Call You!</h3>
+            <p>Your free estimate request has been received.<br>Alex personally responds to every request, usually within <strong>2 hours</strong>.<br><br>Watch for a call or text from <strong>(540) 455-7405</strong>.</p>
+          </div>
         </div>
-        <button class="form-submit">Send Message</button>
       </div>
     </div>
   </div>
@@ -1068,6 +1174,132 @@
       }
     });
   })();
+</script>
+
+<script>
+/* ── Multi-step Booking Form ── */
+var _svc = '', _time = '';
+
+// Set minimum date to tomorrow
+(function(){
+  var d = new Date(); d.setDate(d.getDate()+1);
+  var el = document.getElementById('f-date');
+  if(el) el.min = d.toISOString().split('T')[0];
+})();
+
+function selectService(btn, val){
+  document.querySelectorAll('.service-btn').forEach(function(b){ b.classList.remove('selected'); });
+  btn.classList.add('selected');
+  _svc = val;
+  document.getElementById('svc-error').style.display = 'none';
+}
+
+function selectTime(btn, val){
+  document.querySelectorAll('.time-btn').forEach(function(b){ b.classList.remove('selected'); });
+  btn.classList.add('selected');
+  _time = val;
+  document.getElementById('sched-error').style.display = 'none';
+}
+
+function goStep(n){
+  // Validate before advancing
+  if(n === 2 && !_svc){
+    document.getElementById('svc-error').style.display = 'block';
+    return;
+  }
+  if(n === 3){
+    var s = document.getElementById('f-street').value.trim();
+    var c = document.getElementById('f-city').value.trim();
+    var z = document.getElementById('f-zip').value.trim();
+    if(!s || !c || !z){
+      document.getElementById('addr-error').style.display = 'block';
+      return;
+    }
+    document.getElementById('addr-error').style.display = 'none';
+  }
+  if(n === 4){
+    var date = document.getElementById('f-date').value;
+    if(!date || !_time){
+      document.getElementById('sched-error').style.display = 'block';
+      return;
+    }
+    document.getElementById('sched-error').style.display = 'none';
+  }
+  // Switch panels
+  for(var i=1;i<=4;i++){
+    document.getElementById('bp'+i).classList.remove('active');
+    var dot = document.getElementById('bs'+i);
+    dot.classList.remove('active','done');
+    if(i < n) dot.classList.add('done');
+  }
+  document.getElementById('bp'+n).classList.add('active');
+  document.getElementById('bs'+n).classList.add('active');
+  // Mark step dot done with checkmark
+  document.querySelectorAll('.bstep.done .bstep-dot').forEach(function(d){ d.textContent = '✓'; });
+}
+
+function submitBooking(){
+  var name  = document.getElementById('f-name').value.trim();
+  var phone = document.getElementById('f-phone').value.trim();
+  var email = document.getElementById('f-email').value.trim();
+  if(!name || !phone || !email){
+    document.getElementById('contact-error').style.display = 'block';
+    return;
+  }
+  document.getElementById('contact-error').style.display = 'none';
+
+  var street = document.getElementById('f-street').value.trim();
+  var city   = document.getElementById('f-city').value.trim();
+  var zip    = document.getElementById('f-zip').value.trim();
+  var access = document.getElementById('f-access').value.trim();
+  var date   = document.getElementById('f-date').value;
+  var notes  = document.getElementById('f-notes').value.trim();
+
+  var submitBtn = document.querySelector('.btn-submit');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending…';
+
+  // ── Web3Forms submission ──
+  // Get your free access key at https://web3forms.com — enter alex@fresh-cut-landscape.com
+  var accessKey = 'YOUR_WEB3FORMS_ACCESS_KEY';
+
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    body: JSON.stringify({
+      access_key: accessKey,
+      subject: '🌿 New Quote Request — ' + _svc + ' | ' + city + ', VA',
+      from_name: name,
+      name: name,
+      phone: phone,
+      email: email,
+      service: _svc,
+      address: street + ', ' + city + ', VA ' + zip,
+      access_notes: access || 'None',
+      preferred_date: date,
+      preferred_time: _time,
+      notes: notes || 'None'
+    })
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    if(data.success){
+      // Hide form steps & indicators, show success
+      document.querySelector('.booking-steps').style.display = 'none';
+      for(var i=1;i<=4;i++) document.getElementById('bp'+i).classList.remove('active');
+      document.getElementById('booking-success').style.display = 'block';
+    } else {
+      submitBtn.disabled = false;
+      submitBtn.textContent = '📅 Book My Free Estimate';
+      alert('Something went wrong. Please call Alex directly at (540) 455-7405.');
+    }
+  })
+  .catch(function(){
+    submitBtn.disabled = false;
+    submitBtn.textContent = '📅 Book My Free Estimate';
+    alert('Connection error. Please call Alex directly at (540) 455-7405.');
+  });
+}
 </script>
 </body>
 </html>
