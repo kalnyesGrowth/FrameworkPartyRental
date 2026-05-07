@@ -1261,13 +1261,14 @@ function submitBooking(){
 
   // ── Web3Forms submission ──
   // Get your free access key at https://web3forms.com — enter alex@fresh-cut-landscape.com
-  var accessKey = 'YOUR_WEB3FORMS_ACCESS_KEY';
+  var accessKey = '25a6e14c-6845-4b49-a53d-9243a51b2ed1';
 
   fetch('https://api.web3forms.com/submit', {
     method: 'POST',
     headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
     body: JSON.stringify({
       access_key: accessKey,
+      to: 'info@fresh-cut-landscape.com',
       subject: '🌿 New Quote Request — ' + _svc + ' | ' + city + ', VA',
       from_name: name,
       name: name,
