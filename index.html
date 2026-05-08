@@ -152,11 +152,13 @@
     @media(max-width:480px){.qs-grid{grid-template-columns:repeat(2,1fr)}}
 
     /* ─── PHOTO BAND ─── */
-    .photo-band{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;height:380px;overflow:hidden}
+    .photo-band{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;height:380px;overflow:hidden}
     .photo-band-item{position:relative;overflow:hidden;cursor:pointer;background:#0d2b18}
     .photo-band-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
     .photo-band-item:hover img{transform:scale(1.06)}
-    @media(max-width:600px){.photo-band{grid-template-columns:1fr 1fr;height:480px}}
+    .photo-band-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:20px 10px 8px;text-align:center;pointer-events:none}
+    @media(max-width:900px){.photo-band{grid-template-columns:repeat(3,1fr);height:480px}}
+    @media(max-width:540px){.photo-band{grid-template-columns:repeat(2,1fr);height:560px}}
 
     /* ─── 5-STEP PROCESS ─── */
     #process{background:#fff}
@@ -622,10 +624,12 @@
      PHOTO BAND
      ═══════════════════════════════ -->
 <div class="photo-band">
-  <div class="photo-band-item"><img src="ba-1.jpg" alt="Before & After — Garden Transformation"></div>
-  <div class="photo-band-item"><img src="ba-2.jpg" alt="Before & After — Italian Garden"></div>
-  <div class="photo-band-item"><img src="ba-3.jpg" alt="Before & After — Path & Flowers"></div>
-  <div class="photo-band-item"><img src="ba-4.jpg" alt="Before & After — Modern Landscaping"></div>
+  <div class="photo-band-item"><img src="ba-lawn.png" alt="Before & After — Lawn Care"><div class="photo-band-label">Lawn Care</div></div>
+  <div class="photo-band-item"><img src="ba-mulch.png" alt="Before & After — Mulching"><div class="photo-band-label">Mulching</div></div>
+  <div class="photo-band-item"><img src="ba-tree.png" alt="Before & After — Tree Trimming"><div class="photo-band-label">Tree Trimming</div></div>
+  <div class="photo-band-item"><img src="ba-gutter.png" alt="Before & After — Gutter Cleaning"><div class="photo-band-label">Gutter Cleaning</div></div>
+  <div class="photo-band-item"><img src="ba-leaves.png" alt="Before & After — Leaf Removal"><div class="photo-band-label">Leaf Removal</div></div>
+  <div class="photo-band-item"><img src="ba-storm.png" alt="Before & After — Storm Cleanup"><div class="photo-band-label">Storm Cleanup</div></div>
 </div>
 
 <!-- ═══════════════════════════════
