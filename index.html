@@ -429,7 +429,7 @@
      HERO
      ═══════════════════════════════ -->
 <section class="hero">
-  <video class="hero-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disableRemotePlayback x-webkit-airplay="deny">
+  <video class="hero-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disableRemotePlayback x-webkit-airplay="deny" poster="spotlight-landscaping.jpg">
     <source src="hero-bg.mp4" type="video/mp4">
     <source src="hero-bg-fallback.mp4" type="video/mp4">
   </video>
@@ -505,9 +505,8 @@
         <div class="area-cities">
           <span class="area-city">Fredericksburg</span><span class="area-city">Stafford</span>
           <span class="area-city">Spotsylvania</span><span class="area-city">Culpeper</span>
-          <span class="area-city">Woodbridge</span><span class="area-city">Manassas</span>
-          <span class="area-city">King George</span><span class="area-city">Orange</span>
-          <span class="area-city">Winchester</span><span class="area-city">Harrisonburg</span>
+          <span class="area-city">Woodbridge</span>
+          <span class="area-city">King George</span>
         </div>
         <div class="area-btns">
           <a href="tel:5404557405" class="btn btn-green">📞 Call to Confirm Your Area</a>
@@ -569,8 +568,6 @@
             <!-- Other area labels (lighter) -->
             <circle cx="240" cy="68" r="3" fill="#7a9a7a"/>
             <text x="248" y="71" font-family="Inter,sans-serif" font-size="9" fill="#5a7a5a">Culpeper area</text>
-            <circle cx="150" cy="155" r="3" fill="#7a9a7a"/>
-            <text x="158" y="158" font-family="Inter,sans-serif" font-size="9" fill="#5a7a5a">Orange</text>
 
             <!-- Legend -->
             <rect x="8" y="314" width="172" height="38" rx="6" fill="white" fill-opacity="0.88"/>
@@ -1131,7 +1128,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="faq(this)">What areas do you cover? <span class="faq-icon">+</span></button>
-          <div class="faq-a"><p>We serve Virginia's 540 area code including Fredericksburg, Stafford, Spotsylvania, Culpeper, Woodbridge, Manassas, King George, Orange, and surrounding communities. Call to confirm your specific address.</p></div>
+          <div class="faq-a"><p>We serve Virginia's 540 area code including Fredericksburg, Stafford, Spotsylvania, Culpeper, Woodbridge, King George, and surrounding communities. Call to confirm your specific address.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="faq(this)">Can you handle storm damage quickly? <span class="faq-icon">+</span></button>
@@ -1330,17 +1327,52 @@
   var vid = document.querySelector('.hero-video');
   if(!vid) return;
   vid.muted = true;
-  var p = vid.play();
-  if(p !== undefined){
-    p.catch(function(){
-      vid.style.display = 'none';
-    });
+  vid.setAttribute('playsinline','');
+  vid.setAttribute('webkit-playsinline','');
+
+  var attempts = 0;
+
+  function tryPlay(){
+    if(attempts >= 4) return;
+    attempts++;
+    var p = vid.play();
+    if(p !== undefined) p.catch(function(){});
   }
-  // Retry on first user gesture (covers strict autoplay policies)
+
+  function forceReload(){
+    vid.load();
+    tryPlay();
+  }
+
+  // If video hasn't buffered within 2s of page load, force reload
+  var stallTimer = setTimeout(function(){
+    if(vid.readyState < 3) forceReload();
+  }, 2000);
+
+  vid.addEventListener('canplay', function(){
+    clearTimeout(stallTimer);
+    tryPlay();
+  }, {once: true});
+
+  // Reload on stall or error (the main refresh bug)
+  vid.addEventListener('stalled', forceReload);
+  vid.addEventListener('error', forceReload);
+  vid.addEventListener('suspend', function(){
+    if(vid.readyState < 2) forceReload();
+  });
+
+  // Replay when tab becomes visible after being hidden (refresh edge case)
+  document.addEventListener('visibilitychange', function(){
+    if(!document.hidden && vid.paused) tryPlay();
+  });
+
+  // Retry on first touch (covers strict autoplay policy on iOS)
   document.addEventListener('touchstart', function retry(){
-    vid.play().catch(function(){});
+    if(vid.paused) tryPlay();
     document.removeEventListener('touchstart', retry);
   }, {once: true, passive: true});
+
+  tryPlay();
 })();
 
 /* ── ZIP Checker / Quick-Start ── */
